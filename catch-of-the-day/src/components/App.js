@@ -8,13 +8,14 @@ class App extends React.Component {
         return (
             <div className="catch-of-the-day">
                 <div className="menu">
-                    <Header />
+                    <Header tagline="Hello React" />
+                    <Header tagline="Hello $r" date="2018-03-15" />
                 </div>
                 <Order />
                 <Inventory />
             </div>
         )
-    }
+    } 
 }
 
 export default App;
