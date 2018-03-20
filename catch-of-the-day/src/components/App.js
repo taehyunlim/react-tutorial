@@ -1,21 +1,29 @@
 import React from "react";
 import Header from './Header';
-import Order from './Order';
-import Inventory from './Inventory';
+import Spend from './Spend';
+import Budget from './Budget';
 
 class App extends React.Component {
-    render() {
-        return (
-            <div className="catch-of-the-day">
-                <div className="menu">
-                    <Header tagline="Hello React" />
-                    <Header tagline="Hello $r" date="2018-03-15" />
-                </div>
-                <Order />
-                <Inventory />
-            </div>
-        )
-    } 
+	state = {
+		budgets: {},
+		expenses: {}
+	};
+
+	addBudgetItem = budgetItem => {
+		console.log("adding a budget item");
+	}
+
+	render() {
+		return (
+			<div className="catch-of-the-day">
+				<div className="menu">
+					<Header tagline="Spend Tracker" />
+				</div>
+				<Spend />
+				<Budget addBudgetItem={this.addBudgetItem} />
+			</div>
+		)
+	}
 }
 
 export default App;

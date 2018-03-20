@@ -1,6 +1,6 @@
 import React from "react";
 
-class Order extends React.Component {
+class Spend extends React.Component {
     render() {
         return (
             <div className="Order">
@@ -10,4 +10,4 @@ class Order extends React.Component {
     }
 }
 
-export default Order;
+export default Spend;

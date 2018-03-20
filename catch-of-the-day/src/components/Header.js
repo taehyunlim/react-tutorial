@@ -17,7 +17,7 @@ import React from "react";
 // Stateless Functional Components
 const Header = props => (
     <header className="top">
-        <h1>Catch of the Day</h1>
+        <h1>Ledger</h1>
         <h3 className="tagline">
             <span>{props.tagline} - {props.date}</span>
         </h3>
