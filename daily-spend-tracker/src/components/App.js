@@ -27,6 +27,16 @@ class App extends React.Component {
 		this.setState({ budgets: defaultBudgetItems });
 	}
 
+	addToSpends = (key, price) => {
+		const priceInt = parseInt(price);
+		// 1. take a copy of state
+		const spends = { ...this.state.spends };
+		// 2. Either add the price to the spends, or update the number in the spends
+		spends[key] ? spends[key] = parseInt(spends[key]) + priceInt : spends[key] = priceInt;
+		// 3. Call setState to update the state object
+		this.setState({ spends });
+	}
+
 	render() {
 		return (
 			<div className="catch-of-the-day">
@@ -34,7 +44,8 @@ class App extends React.Component {
 					<Header tagline="Spend Tracker" />
 					<ul className="fishes">
 						{Object.keys(this.state.budgets).map(key => (
-							<BudgetItem key={key} details={this.state.budgets[key]} />
+							// key={key} and index={key} both need to be passed down for the component to access the prop (second one)
+							<BudgetItem key={key} index={key} details={this.state.budgets[key]} addToSpends={this.addToSpends} />
 						))}
 					</ul>
 				</div>
