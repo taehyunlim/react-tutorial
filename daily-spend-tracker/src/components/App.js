@@ -27,12 +27,12 @@ class App extends React.Component {
 		this.setState({ budgets: defaultBudgetItems });
 	}
 
-	addToSpends = (key, price) => {
-		const priceInt = parseInt(price);
+	addToSpends = (key, price, payment) => {
+		const priceInt = parseInt(price, 10);
 		// 1. take a copy of state
 		const spends = { ...this.state.spends };
-		// 2. Either add the price to the spends, or update the number in the spends
-		spends[key] ? spends[key] = parseInt(spends[key]) + priceInt : spends[key] = priceInt;
+		// 2. Either add the price to the spends, or update the number in the spends & payment method
+		spends[key] ? spends[key]["currentSpent"] = parseInt(spends[key]["currentSpent"], 10) + priceInt : spends[key] = { "currentSpent": priceInt, "payment": payment };
 		// 3. Call setState to update the state object
 		this.setState({ spends });
 	}

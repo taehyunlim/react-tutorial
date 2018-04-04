@@ -1,21 +1,19 @@
 import React from "react";
 
 class AddBudgetItemForm extends React.Component {
-  itemRef = React.createRef();
-  amountRef = React.createRef();
-  methodRef = React.createRef();
-  noteRef = React.createRef();
-  imageRef = React.createRef();
+  nameRef = React.createRef();
+  budgetRef = React.createRef();
+  emojiRef = React.createRef();
+  descRef = React.createRef();
 
   createBudgetItem = e => {
     // 1. Stop the form from submitting (default)
     e.preventDefault();
     const budgetItem = {
-      item: this.itemRef.value.value, 
-      amount: parseFloat(this.amountRef.value.value), 
-      method: this.methodRef.value.value, 
-      note: this.noteRef.value.value, 
-      image: this.imageRef.value.value, 
+      name: this.nameRef.value.value, 
+      budget: parseFloat(this.budgetRef.value.value), 
+      emoji: this.emojiRef.value.value, 
+      desc: this.descRef.value.value
     }
     this.props.addBudgetItem(budgetItem);
     // Refresh the form
@@ -24,17 +22,10 @@ class AddBudgetItemForm extends React.Component {
 	render() {
 		return (
 			<form className="fish-edit" onSubmit={this.createBudgetItem}>
-        <input name="item" ref={this.itemRef} type="text" placeholder="Item" />
-        <input name="amount" ref={this.amountRef} type="text" placeholder="Amount" />
-        <select name="method" ref={this.methodRef}>
-          {/* <option value='' disabled>Paid via</option> */}
-          <option value="creditCard">Credit Card</option>
-          <option value="cash">Cash</option>
-          <option value="venmo">Venmo</option>
-          <option value="otther">Other</option>
-        </select>
-        <textarea name="note" ref={this.noteRef} placeholder="Note"></textarea>
-        <input name="image" ref={this.imageRef} type="text" placeholder="Image" />
+        <input name="name" ref={this.nameRef} type="text" placeholder="Item" />
+        <input name="budget" ref={this.budgetRef} type="text" placeholder="Amount" />
+        <input name="emoji" ref={this.emojiRef} type="text" placeholder="Emoji" />
+        <input name="desc" ref={this.descRef} type="textarea" placeholder="Description" />
         <button type="submit">+ Add Budget Item</button>
       </form>
 		)
